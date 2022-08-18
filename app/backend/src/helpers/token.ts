@@ -1,15 +1,19 @@
 import * as jwt from 'jsonwebtoken';
 import ILogin from '../login/LoginInterface';
 
-class token {
+class Token {
   static async createToken(info: ILogin) {
-    const generate = jwt.sign({ user: info }, process.env.JWT_SECRET || 'senha', {
+    const generate = jwt.sign(info, process.env.JWT_SECRET || 'senha', {
       expiresIn: '30d',
       algorithm: 'HS256',
     });
-    console.log(generate);
     return generate;
+  }
+
+  static async validateToken(token: string) {
+    const user = jwt.verify(token, process.env.JWT_SECRET || 'senha') as ILogin;
+    return user;
   }
 }
 
-export default token;
+export default Token;
