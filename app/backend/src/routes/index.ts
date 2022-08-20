@@ -7,6 +7,7 @@ const router = Router();
 
 router.post('/login', LoginValidate.validate, LoginController.login)
   .get('/login/validate', LoginController.validate)
-  .get('/teams', TeamsController.getAll);
+  .get('/teams', TeamsController.getAll)
+  .get('/teams/:id', TeamsController.getById);
 
 export default router;
