@@ -9,6 +9,7 @@ class LoginService {
     const getUser = await Users.findOne({ where: { email: login.email } }) as Users;
     if (!getUser) throw new CustomError(401, 'Incorrect email or password');
     BCrypt.VerifyPassword(login.password, getUser.password);
+
     const getToken = await Token.createToken(login);
     return getToken;
   }
