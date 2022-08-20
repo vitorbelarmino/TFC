@@ -1,13 +1,13 @@
 import { Model, DataTypes } from 'sequelize';
 import db from '.';
 
-class Users extends Model {
+class Teams extends Model {
   declare id: number;
 
   declare teamName: string;
 }
 
-Users.init(
+Teams.init(
   {
     id: {
       type: DataTypes.INTEGER.UNSIGNED,
@@ -28,4 +28,4 @@ Users.init(
   },
 );
 
-export default Users;
+export default Teams;

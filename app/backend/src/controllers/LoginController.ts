@@ -1,5 +1,5 @@
 import { Request, Response } from 'express';
-import LoginService from './LoginService';
+import LoginService from '../services/LoginService';
 
 class LoginController {
   static async login(req: Request, res: Response) {

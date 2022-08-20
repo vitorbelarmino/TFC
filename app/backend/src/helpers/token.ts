@@ -1,5 +1,5 @@
 import * as jwt from 'jsonwebtoken';
-import ILogin from '../login/LoginInterface';
+import ILogin from '../entities/ILogin';
 
 class Token {
   static async createToken(info: ILogin) {

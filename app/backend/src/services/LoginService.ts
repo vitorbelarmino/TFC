@@ -2,7 +2,7 @@ import CustomError from '../helpers/CustomError';
 import Users from '../database/models/UserModels';
 import BCrypt from '../helpers/BCrypt';
 import Token from '../helpers/token';
-import ILogin from './LoginInterface';
+import ILogin from '../entities/ILogin';
 
 class LoginService {
   static async Login(login:ILogin) {
