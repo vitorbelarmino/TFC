@@ -11,6 +11,13 @@ class MatchesController {
     const getProgress = await MatchesService.getInProgress(inProgress as string);
     return res.status(200).json(getProgress);
   }
+
+  static async finishMatches(req: Request, res: Response) {
+    const { id } = req.params;
+    const result = await MatchesService.finishMatches(Number(id));
+
+    res.status(200).json(result);
+  }
 }
 
 export default MatchesController;

@@ -19,6 +19,11 @@ class MatchesService {
     where: { inProgress } });
     return getInProgress;
   }
+
+  static async finishMatches(id: number) {
+    await Matches.update({ inProgress: false }, { where: { id } });
+    return { message: 'Finished' };
+  }
 }
 
 export default MatchesService;
