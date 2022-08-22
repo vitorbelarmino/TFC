@@ -10,6 +10,7 @@ router.post('/login', LoginValidate.validate, LoginController.login)
   .get('/login/validate', LoginController.validate)
   .get('/teams', TeamsController.getAll)
   .get('/teams/:id', TeamsController.getById)
-  .get('/matches', MatchesController.getAll);
+  .get('/matches', MatchesController.getMatches);
+// .get('/matches', MatchesController.getInProgress);
 
 export default router;
