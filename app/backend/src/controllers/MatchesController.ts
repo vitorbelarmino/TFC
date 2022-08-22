@@ -6,10 +6,10 @@ class MatchesController {
     const { inProgress } = req.query;
     if (!inProgress) {
       const allMatches = await MatchesService.getAll();
-      res.status(200).json(allMatches);
+      return res.status(200).json(allMatches);
     }
     const getProgress = await MatchesService.getInProgress(inProgress as string);
-    res.status(200).json(getProgress);
+    return res.status(200).json(getProgress);
   }
 }
 
