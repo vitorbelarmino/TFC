@@ -1,4 +1,5 @@
 import * as jwt from 'jsonwebtoken';
+import CustomError from './CustomError';
 import ILogin from '../entities/ILogin';
 
 class Token {
@@ -11,8 +12,12 @@ class Token {
   }
 
   static async validateToken(token: string) {
-    const user = jwt.verify(token, process.env.JWT_SECRET || 'senha') as ILogin;
-    return user;
+    try {
+      const user = jwt.verify(token, process.env.JWT_SECRET || 'senha') as ILogin;
+      return user;
+    } catch (error) {
+      throw new CustomError(401, 'Token must be a valid token');
+    }
   }
 }
 
