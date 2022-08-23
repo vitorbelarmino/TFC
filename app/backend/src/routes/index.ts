@@ -12,5 +12,6 @@ router.post('/login', LoginValidate.validate, LoginController.login)
   .get('/teams/:id', TeamsController.getById)
   .post('/matches', MatchesController.createMatch)
   .get('/matches', MatchesController.getMatches)
-  .patch('/matches/:id/finish', MatchesController.finishMatches);
+  .patch('/matches/:id/finish', MatchesController.finishMatches)
+  .patch('/matches/:id', MatchesController.UpdateScore);
 export default router;

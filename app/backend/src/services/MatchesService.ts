@@ -4,6 +4,7 @@ import IMatch from '../entities/IMatch';
 import Token from '../helpers/token';
 import CustomError from '../helpers/CustomError';
 import TeamsService from './TeamsService';
+import IScore from '../entities/IScore';
 
 class MatchesService {
   static async getAll() {
@@ -40,6 +41,15 @@ class MatchesService {
   static async finishMatches(id: number) {
     await Matches.update({ inProgress: false }, { where: { id } });
     return { message: 'Finished' };
+  }
+
+  static async updateScore(scores: IScore, id: number) {
+    const updatedScores = {
+      homeTeamGoals: scores.homeTeamGoals,
+      awayTeamGoals: scores.awayTeamGoals,
+    };
+    await Matches.update(updatedScores, { where: { id } });
+    return { message: 'updated score with success' };
   }
 }
 

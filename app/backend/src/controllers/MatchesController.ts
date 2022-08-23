@@ -22,8 +22,14 @@ class MatchesController {
   static async finishMatches(req: Request, res: Response) {
     const { id } = req.params;
     const result = await MatchesService.finishMatches(Number(id));
-
     res.status(200).json(result);
+  }
+
+  static async UpdateScore(req: Request, res: Response) {
+    const { id } = req.params;
+    const score = req.body;
+    const match = await MatchesService.updateScore(score, Number(id));
+    res.status(200).json(match);
   }
 }
 
