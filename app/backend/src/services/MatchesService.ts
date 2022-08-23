@@ -31,7 +31,6 @@ class MatchesService {
     }
     const homeTeam = await TeamsService.getById(Number(match.homeTeam));
     const awayTeam = await TeamsService.getById(Number(match.awayTeam));
-    console.log(homeTeam, awayTeam);
     if (!homeTeam || !awayTeam) throw new CustomError(404, 'There is no team with such id!');
 
     const newMatch = await Matches.create({ ...match, inProgress: true });
