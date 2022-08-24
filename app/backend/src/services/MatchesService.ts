@@ -21,7 +21,8 @@ class MatchesService {
       { model: Teams, as: 'teamHome', attributes: ['teamName'] },
       { model: Teams, as: 'teamAway', attributes: ['teamName'] },
     ],
-    where: { inProgress } });
+    where: { inProgress },
+    });
     return getInProgress;
   }
 

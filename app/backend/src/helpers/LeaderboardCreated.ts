@@ -1,6 +1,5 @@
 import ILeaderboard from '../entities/ILeaderboard';
 import ITeamsWithMatches from '../entities/ITeamsWithMatches';
-// import ILeaderboard from '../entities/ILeaderboard';
 
 class RankingDTO {
   static victories(matches: ITeamsWithMatches) {
