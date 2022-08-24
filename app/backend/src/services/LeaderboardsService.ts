@@ -1,7 +1,6 @@
 import Teams from '../database/models/TeamsModels';
 import Matches from '../database/models/MatchesModels';
 import LeaderboardCreated from '../helpers/LeaderboardCreated';
-// import ITeamsWithMatches from '../entities/ITeamsWithMatches';
 
 class LeaderBoardService {
   static async getRanking() {
@@ -10,7 +9,8 @@ class LeaderBoardService {
     ],
     });
     const leaderboards = LeaderboardCreated.created(matches as any);
-    return leaderboards;
+    const order = LeaderboardCreated.order(leaderboards);
+    return order;
   }
 }
 
