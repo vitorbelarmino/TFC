@@ -128,28 +128,29 @@ describe('Testa as rotas de matches', () => {
       it('Testa a criação de uma partida com sucesso"', async() => {
         sinon.stub(Matches, "create").resolves(newMachMock as any)
         sinon.stub(Token, "validateToken").resolves()
-
+        
         const response = await chai.request(app).post('/matches').send(newMachMock)
         expect(response.status).to.be.equal(201)
-        expect(response.body).to.be.deep.equal(newMachMock)     
-        
-        it('Testa se não é possível a criação de uma partida com times iguais', async () => {
-          sinon.stub(Token, "validateToken").resolves()
-          
-          const response = await chai.request(app).post('/matches').send(sameTeamsMock)
-          expect(response.status).to.be.equal(401)
-          expect(response.body).to.be.deep.equal({message: 'It is not possible to create a match with two equal teams'})
-        })
-        
-        it('Testa se não é possível criar uma partida faltando um time', async() => {
-          sinon.stub(Token, "validateToken").resolves()
-          
-          const response = await chai.request(app).post('/matches').send(matchFailMock)
-          expect(response.status).to.be.equal(404)
-          expect(response.body).to.be.deep.equal({message: 'There is no team with such id!'})
+        expect(response.body).to.be.deep.equal(newMachMock)    
       })
+      
+      it('Testa se não é possível a criação de uma partida com times iguais', async () => {
+        sinon.stub(Token, "validateToken").resolves()
         
+        const response = await chai.request(app).post('/matches').send(sameTeamsMock)
+        expect(response.status).to.be.equal(401)
+        expect(response.body).to.be.deep.equal({message: 'It is not possible to create a match with two equal teams'})
+      })
+      
+      it('Testa se não é possível criar uma partida faltando um time', async() => {
+        sinon.stub(Token, "validateToken").resolves()
+        
+        const response = await chai.request(app).post('/matches').send(matchFailMock)
+        expect(response.status).to.be.equal(404)
+        expect(response.body).to.be.deep.equal({message: 'There is no team with such id!'})
+      })
     })
+      
     describe('Alteração de placar', () => {
       it('Altera a propriedade inProgress pra false de partida no banco de dados', async() => {
         sinon.stub(Matches, 'update').resolves()
@@ -167,7 +168,6 @@ describe('Testa as rotas de matches', () => {
         expect(response.body).to.be.deep.equal({message: 'updated score with success'})
       })
     })
-  })
 })
   
 })
