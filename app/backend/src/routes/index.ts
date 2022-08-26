@@ -15,5 +15,6 @@ router.post('/login', LoginValidate.validate, LoginController.login)
   .get('/matches', MatchesController.getMatches)
   .patch('/matches/:id/finish', MatchesController.finishMatches)
   .patch('/matches/:id', MatchesController.UpdateScore)
-  .get('/leaderboard/home', LeaderboardsController.getRanking);
+  .get('/leaderboard/home', LeaderboardsController.getRankingHome)
+  .get('/leaderboard/away', LeaderboardsController.getRankingAway);
 export default router;
