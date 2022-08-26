@@ -20,4 +20,25 @@ interface ITeamsWithMatches extends Matches {
   teamName: string,
 }
 
-export { ITeamsWithMatches, Matches, typeMatches };
+interface ITeamsWithMatchesFull {
+  id: number,
+  teamName: string,
+  homeMatches: {
+    id: number,
+    homeTeam: number,
+    homeTeamGoals: number,
+    awayTeam: number,
+    awayTeamGoals: number,
+    inProgress: number
+  }[],
+  awayMatches: {
+    id: number,
+    homeTeam: number,
+    homeTeamGoals: number,
+    awayTeam: number,
+    awayTeamGoals: number,
+    inProgress: number
+  }[],
+}
+
+export { ITeamsWithMatches, Matches, typeMatches, ITeamsWithMatchesFull };

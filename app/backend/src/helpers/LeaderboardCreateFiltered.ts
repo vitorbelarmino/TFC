@@ -1,4 +1,3 @@
-import ILeaderboard from '../entities/ILeaderboard';
 import { ITeamsWithMatches, typeMatches } from '../entities/ITeamsWithMatches';
 
 class RankingDTO {
@@ -27,16 +26,6 @@ class RankingDTO {
       return acc;
     }, 0);
     return allDraws;
-  }
-
-  static order(ranking: ILeaderboard[]) {
-    const order = ranking.sort((a, b) =>
-      b.totalPoints - a.totalPoints
-      || b.totalVictories - a.totalVictories
-      || b.goalsBalance - a.goalsBalance
-      || b.goalsFavor - a.goalsFavor
-      || b.goalsOwn - a.goalsOwn);
-    return order;
   }
 
   static favorGoals(match: ITeamsWithMatches, type: typeMatches) {

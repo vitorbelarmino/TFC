@@ -5,7 +5,7 @@ import chaiHttp = require('chai-http');
 
 import { app } from '../app';
 import Matches from '../database/models/MatchesModels';
-import { rankingAwayInOrderMock, rankingHomeInOrderMock,
+import { fullTeamsWithMatchesMock, rankingAwayInOrderMock, rankingFull, rankingHomeInOrderMock,
   teamsAwayWithMatchesMock, TeamsHomeWithMatchesMock } from './mocks/Leaderboard';
 import Teams from '../database/models/TeamsModels';
 
@@ -36,4 +36,14 @@ describe('Testa Leaderboards', () => {
       expect(response.body).to.be.deep.equal(rankingAwayInOrderMock)
     })
   })
+
+  describe('Testa a rota GET"/leaderboard"', () => {
+    it('retorna o Ranking dos times de todas as partidas', async() => {
+      sinon.stub(Matches, 'findAll').resolves(fullTeamsWithMatchesMock as unknown as Teams[])
+      const response = await chai.request(app).get('/leaderboard')
+      expect(response.status).to.be.equal(200)
+      expect(response.body).to.be.deep.equal(rankingFull)
+    })
+  })
+
 })
