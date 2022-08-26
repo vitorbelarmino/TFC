@@ -23,16 +23,17 @@ Além disto é bom ter um editor para trabalhar com o código como [VSCode](http
 $ git clone git@github.com:serjofrancisco/ProjectTrybe-TFC.git
 
 # Acesse a pasta do projeto no terminal/cmd
-$ cd ProjectTrybe-TFC
+$ cd TFC
 
 # Instale as dependências
 $ npm install
 
 # Execute a aplicação em modo de desenvolvimento
 $ inicie o banco de dados
+$ npm run compose:up
 
 # Execute a aplicação em modo de desenvolvimento
-$ npm run debug
+$ npm run dev
 
 # O servidor inciará na porta:3001 - acesse http://localhost:3001
 
